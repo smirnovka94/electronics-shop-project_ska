@@ -68,7 +68,7 @@ class Item:
         """
         Преобразует строку в число.
         """
-        return int(string)
+        return int(float(string))
 
 
 
