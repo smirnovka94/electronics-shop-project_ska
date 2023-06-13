@@ -62,7 +62,6 @@ class Item:
                 name = row['name']
                 price = float(row['price'])
                 quantity = int(row['quantity'])
-                print(name, price, quantity)
                 cls(name, price, quantity)
 
     @staticmethod
