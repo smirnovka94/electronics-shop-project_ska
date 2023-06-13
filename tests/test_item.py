@@ -28,3 +28,22 @@ def test_apply_discount():
     Item.pay_rate = 1.5
     item3.apply_discount()
     assert item3.price == 30000
+
+def test_name_setter():
+    """
+    Тестируем сеттер для name.
+    """
+    item = Item('Телефон', 10000, 5)
+    item.name = 'Нов тел'
+    assert item.name == 'Нов тел'
+
+def test_instantiate_from_csv():
+    """Test classmethod"""
+    Item.instantiate_from_csv()
+    assert len(Item.all) == 5
+    item1 = Item.all[0]
+    assert item1.name == 'Смартфон'
+
+def test_string_to_number():
+    """Test staticmethod"""
+    assert Item.string_to_number('5') == 5
