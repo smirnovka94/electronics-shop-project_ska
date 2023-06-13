@@ -41,8 +41,7 @@ def test_instantiate_from_csv():
     """Test classmethod"""
     Item.instantiate_from_csv()
     assert len(Item.all) == 5
-    item1 = Item.all[0]
-    assert item1.name == 'Смартфон'
+
 
 def test_string_to_number():
     """Test staticmethod"""

@@ -54,6 +54,7 @@ class Item:
         """
         Инициализирует экземпляры класса Item из csv файла.
         """
+        Item.all = []
         filename = os.path.join(os.path.dirname(__file__), 'items.csv')
         with open(filename, newline='') as csvfile:
             reader = csv.DictReader(csvfile)
@@ -61,7 +62,8 @@ class Item:
                 name = row['name']
                 price = float(row['price'])
                 quantity = int(row['quantity'])
-                return cls(name, price, quantity)
+                print(name, price, quantity)
+                cls(name, price, quantity)
 
     @staticmethod
     def string_to_number(string):
