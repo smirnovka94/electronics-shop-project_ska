@@ -56,7 +56,7 @@ class Item:
         """
         Item.all = []
         filename = os.path.join(os.path.dirname(__file__), 'items.csv')
-        with open(filename, newline='') as csvfile:
+        with open(filename, newline='', encoding='windows-1251') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 name = row['name']
