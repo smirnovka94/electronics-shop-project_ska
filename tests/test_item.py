@@ -48,3 +48,19 @@ def test_string_to_number():
     assert Item.string_to_number('5') == 5
     assert Item.string_to_number('5.0') == 5
     assert Item.string_to_number('5.5') == 5
+
+
+def test_repr():
+    """Test __repr__"""
+    item1 = Item("Смартфон", 10000, 20)
+    item2 = Item("IPhone", 50, 300)
+    item3 = Item("Nokia", 20000, 1)
+    assert repr(item1) == "Item('Смартфон', 10000, 20)"
+    assert repr(item2) == "Item('IPhone', 50, 300)"
+    assert repr(item3) == "Item('Nokia', 20000, 1)"
+
+def test_str():
+    """Test __str__"""
+    assert str(item1) == 'Смартфон'
+    assert str(item2) == 'IPhone'
+    assert str(item3) == 'Nokia'
