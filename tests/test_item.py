@@ -2,6 +2,7 @@
 import pytest
 
 from src.item import Item
+from src.phone import Phone
 
 item1 = Item("Смартфон", 10000, 20)
 item2 = Item("IPhone", 50, 300)
@@ -64,3 +65,14 @@ def test_str():
     assert str(item1) == 'Смартфон'
     assert str(item2) == 'IPhone'
     assert str(item3) == 'Nokia'
+
+
+phone1 = Phone("iPhone 14", 120_000, 5, 2)
+def test_Phone_init():
+    assert str(phone1) == 'iPhone 14'
+    assert repr(phone1) == "Phone('iPhone 14', 120000, 5, 2)"
+    assert phone1.number_of_sim == 2
+
+def test_add():
+    assert item1 + phone1 == 25
+    assert phone1 + phone1 == 10
