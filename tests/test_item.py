@@ -2,6 +2,7 @@
 import pytest
 
 from src.item import Item
+from src.keyboard import Keyboard
 from src.phone import Phone
 
 item1 = Item("Смартфон", 10000, 20)
@@ -76,3 +77,21 @@ def test_Phone_init():
 def test_add():
     assert item1 + phone1 == 25
     assert phone1 + phone1 == 10
+
+# H/W 5
+kb = Keyboard('Dark Project KD87A', 9600, 5)
+def test_Keyboard():
+    kb = Keyboard('Dark Project KD87A', 9600, 5)
+    assert str(kb) == "Dark Project KD87A"
+    assert str(kb.name) == "Dark Project KD87A"
+    assert str(kb.price) == '9600'
+    assert str(kb.quantity) == '5'
+
+def test_Mixin():
+    assert str(kb.language) == "EN"
+    kb.change_lang()
+    assert str(kb.language) == "RU"
+    # Сделали RU -> EN -> RU
+    kb.change_lang().change_lang()
+    assert str(kb.language) == "RU"
+
