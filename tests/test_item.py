@@ -95,3 +95,7 @@ def test_Mixin():
     kb.change_lang().change_lang()
     assert str(kb.language) == "RU"
 
+# H/W 6
+def test_instantiate_from_csv_():
+    with pytest.raises(FileNotFoundError):
+        Item.instantiate_from_csv("item.csv")
