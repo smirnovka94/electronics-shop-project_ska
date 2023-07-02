@@ -49,19 +49,26 @@ class Item:
             raise Exception ("Длина наименования товара превышает 10 символов")
 
     @classmethod
-    def instantiate_from_csv(cls):
+    def instantiate_from_csv(cls, file='items.csv'):
         """
         Инициализирует экземпляры класса Item из csv файла.
         """
         Item.all = []
-        filename = os.path.join(os.path.dirname(__file__), 'items.csv')
-        with open(filename, newline='', encoding='windows-1251') as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                name = row['name']
-                price = float(row['price'])
-                quantity = int(row['quantity'])
-                cls(name, price, quantity)
+        filename = os.path.join(os.path.dirname(__file__), file)
+        try:
+            with open(filename, newline='', encoding='windows-1251') as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    if len(row) != 3:
+                        raise InstantiateCSVError
+                    else:
+                        name = row['name']
+                        price = float(row['price'])
+                        quantity = int(row['quantity'])
+                        cls(name, price, quantity)
+        except FileNotFoundError:
+            raise FileNotFoundError(f"Отсутствует файл {file}")
+
 
     @staticmethod
     def string_to_number(string):
@@ -83,5 +90,8 @@ class Item:
 
 
 
+class InstantiateCSVError(Exception):
+    def __init__(self, message="Файл items.csv поврежден"):
+        super().__init__(message)
 
 
